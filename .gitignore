@@ -1,0 +1,18 @@
+# --- General ---
+.DS_Store
+.env
+.env.local
+
+# --- Node ---
+node_modules/
+npm-debug.log*
+
+# --- Backend ---
+# (if your backend has a different build output)
+build/
+dist/
+
+# --- Frontend ---
+# (Common for Create React App or Vite)
+/build
+/dist
