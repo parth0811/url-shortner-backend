@@ -15,22 +15,20 @@ dotenv.config();
 const app = express();
 
 const allowedOrigins = [
+  "http://localhost:5173",
   "https://url-shortner-frontend-ruddy.vercel.app"
 ];
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like Postman)
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
+  origin: allowedOrigins,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+// 👇 VERY IMPORTANT (preflight fix)
+app.options("*", cors());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
