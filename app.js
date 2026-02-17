@@ -14,19 +14,10 @@ dotenv.config();
 
 const app = express();
 
-const allowedOrigins = [
-  "http://localhost:5173",
-  "https://url-shortner-frontend-ruddy.vercel.app"
-];
-
 app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: "https://url-shortner-frontend-ruddy.vercel.app",
+  credentials: true
 }));
-
-// 👇 VERY IMPORTANT (preflight fix)
 app.options("*", cors());
 
 
