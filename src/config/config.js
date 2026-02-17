@@ -1,6 +1,7 @@
+
 export const cookieOptions = {
-  httpOnly: true,
-  secure: true,        // MUST be true on HTTPS (Render + Vercel)
-  sameSite: "none",    // REQUIRED for cross-site cookies
-  maxAge: 1000 * 60 * 60 // 1 hour
-};
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "Lax",
+    maxAge: 1000 * 60 * 60, // 5 minutes
+}
